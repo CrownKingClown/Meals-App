@@ -72,8 +72,6 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
-        accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -88,6 +86,8 @@ class _MyAppState extends State<MyApp> {
               fontFamily: 'RobotoCondensed',
               fontWeight: FontWeight.bold,
             )),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
+            .copyWith(secondary: Colors.amber),
       ),
       // home: CategoriesScreen(),
       initialRoute: '/', // default is '/'
@@ -100,13 +100,9 @@ class _MyAppState extends State<MyApp> {
         FiltersScreen.routeName: (ctx) => FiltersScreen(_filters, _setFilters),
       },
       onGenerateRoute: (settings) {
-        print(settings.arguments);
-        // if (settings.name == '/meal-detail') {
-        //   return ...;
-        // } else if (settings.name == '/something-else') {
-        //   return ...;
-        // }
-        // return MaterialPageRoute(builder: (ctx) => CategoriesScreen(),);
+        return MaterialPageRoute(
+          builder: (ctx) => CategoriesScreen(),
+        );
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
